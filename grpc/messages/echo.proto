@@ -5,7 +5,7 @@ package echo;
 // The greeting service definition.
 service Echo {
   // Sends a greeting
-  rpc Echo (EchoRequest) returns (EchoReply) {}
+  rpc Echo (EchoRequest) returns (EchoResponse) {}
 }
 
 // The request message containing the user's name.
@@ -14,6 +14,6 @@ message EchoRequest {
 }
 
 // The response message containing the greetings
-message EchoReply {
+message EchoResponse {
   string message = 1;
 }

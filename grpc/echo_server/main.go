@@ -18,8 +18,8 @@ const (
 type server struct{}
 
 // SayHello implements helloworld.GreeterServer
-func (s *server) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoReply, error) {
-	return &pb.EchoReply{Message: "Content: " + in.Message}, nil
+func (s *server) Echo(ctx context.Context, in *pb.EchoRequest) (*pb.EchoResponse, error) {
+	return &pb.EchoResponse{Message: "Content: " + in.Message}, nil
 }
 
 func main() {

@@ -10,7 +10,7 @@ It is generated from these files:
 
 It has these top-level messages:
 	EchoRequest
-	EchoReply
+	EchoResponse
 */
 package echo
 
@@ -52,16 +52,16 @@ func (m *EchoRequest) GetMessage() string {
 }
 
 // The response message containing the greetings
-type EchoReply struct {
+type EchoResponse struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
 
-func (m *EchoReply) Reset()                    { *m = EchoReply{} }
-func (m *EchoReply) String() string            { return proto.CompactTextString(m) }
-func (*EchoReply) ProtoMessage()               {}
-func (*EchoReply) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *EchoResponse) Reset()                    { *m = EchoResponse{} }
+func (m *EchoResponse) String() string            { return proto.CompactTextString(m) }
+func (*EchoResponse) ProtoMessage()               {}
+func (*EchoResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *EchoReply) GetMessage() string {
+func (m *EchoResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
@@ -70,7 +70,7 @@ func (m *EchoReply) GetMessage() string {
 
 func init() {
 	proto.RegisterType((*EchoRequest)(nil), "echo.EchoRequest")
-	proto.RegisterType((*EchoReply)(nil), "echo.EchoReply")
+	proto.RegisterType((*EchoResponse)(nil), "echo.EchoResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -85,7 +85,7 @@ const _ = grpc.SupportPackageIsVersion4
 
 type EchoClient interface {
 	// Sends a greeting
-	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoReply, error)
+	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error)
 }
 
 type echoClient struct {
@@ -96,8 +96,8 @@ func NewEchoClient(cc *grpc.ClientConn) EchoClient {
 	return &echoClient{cc}
 }
 
-func (c *echoClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoReply, error) {
-	out := new(EchoReply)
+func (c *echoClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error) {
+	out := new(EchoResponse)
 	err := grpc.Invoke(ctx, "/echo.Echo/Echo", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -109,7 +109,7 @@ func (c *echoClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.Cal
 
 type EchoServer interface {
 	// Sends a greeting
-	Echo(context.Context, *EchoRequest) (*EchoReply, error)
+	Echo(context.Context, *EchoRequest) (*EchoResponse, error)
 }
 
 func RegisterEchoServer(s *grpc.Server, srv EchoServer) {
@@ -150,13 +150,13 @@ var _Echo_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("echo.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 116 bytes of a gzipped FileDescriptorProto
+	// 118 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0xe2, 0x4a, 0x4d, 0xce, 0xc8,
 	0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x01, 0xb1, 0x95, 0xd4, 0xb9, 0xb8, 0x5d, 0x93,
 	0x33, 0xf2, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x84, 0x24, 0xb8, 0xd8, 0x73, 0x53, 0x8b,
-	0x8b, 0x13, 0xd3, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0x60, 0x5c, 0x25, 0x55, 0x2e,
-	0x4e, 0x88, 0xc2, 0x82, 0x9c, 0x4a, 0xdc, 0xca, 0x8c, 0x4c, 0xb8, 0x58, 0x40, 0xca, 0x84, 0x74,
-	0xa0, 0xb4, 0xa0, 0x1e, 0xd8, 0x4a, 0x24, 0x3b, 0xa4, 0xf8, 0x91, 0x85, 0x0a, 0x72, 0x2a, 0x95,
-	0x18, 0x92, 0xd8, 0xc0, 0x4e, 0x32, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0xfd, 0x52, 0x8f, 0x2f,
-	0xa0, 0x00, 0x00, 0x00,
+	0x8b, 0x13, 0xd3, 0x53, 0x25, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0x60, 0x5c, 0x25, 0x0d, 0x2e,
+	0x1e, 0x88, 0xc2, 0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0xdc, 0x2a, 0x8d, 0xcc, 0xb9, 0x58, 0x40,
+	0x2a, 0x85, 0xf4, 0xa1, 0xb4, 0xa0, 0x1e, 0xd8, 0x56, 0x24, 0x6b, 0xa4, 0x84, 0x90, 0x85, 0x20,
+	0x06, 0x2a, 0x31, 0x24, 0xb1, 0x81, 0x1d, 0x66, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x6c, 0x25,
+	0x7e, 0x84, 0xa6, 0x00, 0x00, 0x00,
 }
